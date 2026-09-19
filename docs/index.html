@@ -490,11 +490,15 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 					applyLang(pickInitial());
 
-					document.addEventListener('click', function(e) {
-						var target = e.target.closest ? e.target.closest('[data-set-lang]') : null;
-						if (!target) return;
-						applyLang(target.getAttribute('data-set-lang'));
-					});
+					var langToggle = document.querySelector('.lang-toggle');
+					if (langToggle) {
+						langToggle.addEventListener('click', function(e) {
+							e.stopPropagation();
+							var target = e.target.closest ? e.target.closest('[data-set-lang]') : null;
+							if (!target) return;
+							applyLang(target.getAttribute('data-set-lang'));
+						});
+					}
 				})();
 			</script>
 
